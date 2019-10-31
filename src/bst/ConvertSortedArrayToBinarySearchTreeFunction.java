@@ -2,35 +2,35 @@ package bst;
 
 public class ConvertSortedArrayToBinarySearchTreeFunction {
 	public TreeNode sortedArrayToBST(int[] nums) {
-		// If the array is empty, just return null as a tree
-		if (nums.length == 0) {
+		// Error checking
+		if(nums == null || nums.length == 0){
 			return null;
 		}
-
-		// This is the recursion function, give array, 0 as start and the last
-		// element
-		TreeNode head = helperFunction(nums, 0, nums.length - 1);
-
-		return head;
+		
+		// Start the BST
+		return helperBSTRecursive(nums, 0, nums.length - 1);
 	}
 
 	// Helper function that does the tree
-	public TreeNode helperFunction(int[] num, int low, int high) {
-		// If low ever bigger than high, return null as means there is no node
-		if (low > high) {
+	public TreeNode helperBSTRecursive(int[] nums, int left, int right) {
+		// Left pointer can not be bigger than right pointer
+		if(left > right){
 			return null;
 		}
-
-		// Mid point is just diving it by half everytime
-		int mid = (low + high) / 2;
-
-		// Creating a node object that have the size of num[mid]
-		TreeNode node = new TreeNode(num[mid]);
-
-		node.left = helperFunction(num, low, mid - 1);
-
-		node.right = helperFunction(num, mid + 1, high);
-
-		return node;
+		
+		// Start from the mid point cause the array is sorted
+		int mid = left + (right - left)/2;
+		
+		// Use the mid point as first treeNode
+		TreeNode currentNode = new TreeNode(nums[mid]);
+		
+		// Keep getting the left node of current node until it return null
+		currentNode.left = helperBSTRecursive(nums, left, mid - 1);
+		
+		// Keep getting the right node of current node until it return null
+		currentNode.right = helperBSTRecursive(nums, mid + 1, right);
+		
+		// Return the mid node that connect to every other nodes;
+		return currentNode;
 	}
 }

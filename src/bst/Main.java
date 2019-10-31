@@ -6,7 +6,7 @@ import java.util.Queue;
 
 public class Main {
 	public static void main (String[] args){
-		int[] nums = {-10,-3,0,5,9};
+		int[] nums = {-10,-3,0,5,9,10};
 		
 		System.out.println("Input: " + Arrays.toString(nums));
 		
@@ -17,10 +17,9 @@ public class Main {
 		String solutionTree = treeNodeToString(tree);
 		
 		System.out.println("Solution: " + solutionTree);
-		
-		
 	}
 	
+	// How to print a print level by level
 	public static String treeNodeToString(TreeNode root) {
         if (root == null) {
             return "[]";
