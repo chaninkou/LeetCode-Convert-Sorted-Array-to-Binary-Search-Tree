@@ -29,20 +29,27 @@ public class Main {
         
         Queue<TreeNode> nodeQueue = new LinkedList<>();
         
+        // add root as default
         nodeQueue.add(root);
         
+        // While queue not empty
         while(!nodeQueue.isEmpty()) {
+        	// Get the element that the queue removed
             TreeNode node = nodeQueue.remove();
     
+            // If its node, then add null to the output string
             if (node == null) {
               output += "null, ";
               continue;
             }
     
+            // Add the node to the output string
             output += String.valueOf(node.val) + ", ";
             
+            // Add the left node to the queue
             nodeQueue.add(node.left);
             
+            // Add the right node to the queue
             nodeQueue.add(node.right);
         }
         
