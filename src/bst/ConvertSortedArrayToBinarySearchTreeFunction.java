@@ -14,11 +14,13 @@ public class ConvertSortedArrayToBinarySearchTreeFunction {
 	// Helper function that does the tree
 	public TreeNode helperBSTRecursive(int[] nums, int left, int right) {
 		// Left pointer can not be bigger than right pointer
+		// This will occur when we are already on the most left element or most right element of current range
 		if(left > right){
 			return null;
 		}
 		
 		// Start from the mid point cause the array is sorted
+		// Binary Search Tree always have the middle value on top to make it balance
 		int mid = left + (right - left)/2;
 		
 		// Use the mid point as first treeNode
