@@ -2,7 +2,7 @@ package bst;
 
 public class ConvertSortedArrayToBinarySearchTreeFunction {
 	public TreeNode sortedArrayToBST(int[] nums) {
-		// Error checking
+		// Error checking, since we don't want a -1 length for the right
 		if(nums == null || nums.length == 0){
 			return null;
 		}
@@ -21,11 +21,13 @@ public class ConvertSortedArrayToBinarySearchTreeFunction {
 		
 		// Start from the mid point cause the array is sorted
 		// Binary Search Tree always have the middle value on top to make it balance
+		// We could just use (left + right)/2 cause left could never be negative since the if statement above
 		int mid = left + (right - left)/2;
 		
 		// Use the mid point as first treeNode
 		TreeNode currentNode = new TreeNode(nums[mid]);
 		
+		// Since currentNode will be the mid point, whatever to the left is smaller and whatever to the right is bigger than itself
 		// Keep getting the left node of current node until it return null
 		currentNode.left = helperBSTRecursive(nums, left, mid - 1);
 		
