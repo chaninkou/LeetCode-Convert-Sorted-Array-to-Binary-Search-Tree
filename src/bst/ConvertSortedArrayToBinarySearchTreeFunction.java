@@ -21,7 +21,7 @@ public class ConvertSortedArrayToBinarySearchTreeFunction {
 		
 		// Start from the mid point cause the array is sorted
 		// Binary Search Tree always have the middle value on top to make it balance
-		// We could just use (left + right)/2 cause left could never be negative since the if statement above
+		// We could just use (left + right)/2 instead but this is good practice to prevent negative
 		int mid = left + (right - left)/2;
 		
 		// Use the mid point as first treeNode
